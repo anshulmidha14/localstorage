@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="container">
+<h2 class="head">Log IN</h2>
+<form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="color">
+    
+    <label>Email</label>
+    <input type="email" placeholder="Email" formControlName="email" class="form-control" required>
+    <div class="alert alert-danger error" *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched && loginForm.controls.email.errors.required">Email is required</div>
+    <div class="alert alert-info error" *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched && loginForm.controls.email.errors.pattern">Please enter valid email</div>
+
+    <label>Password</label>
+    <input type="password" placeholder="Password" formControlName="password" class="form-control" required>
+    <div class="alert alert-danger error" *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched && loginForm.controls.password.errors.required">Password is required</div>
+    <div class="alert alert-info error" *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched && loginForm.controls.password.errors.pattern">Please enter 10 digit password with special character and one number and one uppercase and one lowercase .</div><br>
+
+    
+    <button type="submit" class="btn btn-primary sub" [disabled]="!loginForm.valid">Submit</button>
+    <button type="submit" class="btn btn-danger can" (click)="cancel()">Cancel</button>
+
+
+</form>
+</div>
+</div>

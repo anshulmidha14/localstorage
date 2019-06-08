@@ -1,0 +1,43 @@
+<nav class="navbar navbar-inverse head">
+  <div class="container-fluid">
+    
+    <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+      
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a  routerLink="/reactiveform"><span class="glyphicon glyphicon-user"></span> Sign R</a></li>
+        <li><a  routerLink="/loginform"><span class="glyphicon glyphicon-log-in"></span> LoginR</a></li>
+        
+        <li><a  routerLink="/signin"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <!---<li><a  routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
+       
+        
+      </ul>
+  </div>
+</nav>
+
+<div class="container">
+<table  class="design" >
+    <tr>
+        <th rowspan="2" appTable>S.No</th>
+          <th rowspan="2" appTable>Name</th>
+          <th rowspan="2" appTable>Mobile</th>
+          <th colspan="6" style="text-align: center" appTable>Address </th>
+      </tr>
+      <tr>
+          <th appTable>City</th>
+          <th appTable>state</th>
+          <th appTable>country</th>
+      </tr>
+      <tr *ngFor= "let record of admin; let i=index">
+        <td appDesign>{{i+1}}</td>
+        <td appDesign>{{record.name}}</td>
+        <td appDesign>{{record.mobile}}</td>
+        <td appDesign>{{record.address.city}}</td>
+        <td appDesign>{{record.address.state}}</td>
+        <td appDesign>{{record.address.country}}</td>
+      </tr>
+    
+</table>
+</div>

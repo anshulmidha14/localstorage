@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="container">
+<h2 class="head">SIGN IN</h2>
+<form [formGroup]="signinForm" (ngSubmit)="submitForm()" class="color">
+    
+  <label>Name</label>
+  <input type="text" placeholder="Enter Name" formControlName="name" class="form-control" required>
+ <span  class="alert alert-danger error" *ngIf="signinForm.controls.name.invalid && signinForm.controls.name.touched && signinForm.controls.name.errors.required">Name is required</span>
+  <span class="alert alert-info error" *ngIf=" signinForm.controls.name.invalid  && signinForm.controls.name.touched && signinForm.controls.name.errors.minlength">Name should be of atleast 5 characters long</span>
+  <span class="alert alert-info error" *ngIf="signinForm.controls.name.invalid && signinForm.controls.name.touched && signinForm.controls.name.errors.maxlength">Maximum char  limit is 5</span>
+
+
+    <label>Mobile-No</label>
+    <input type="number" placeholder="mobile-no" formControlName="mobile" class="form-control" required>
+    <div class="alert alert-danger error" *ngIf="signinForm.controls.mobile.invalid && signinForm.controls.mobile.touched && signinForm.controls.mobile.errors.required">Mobile-no is required</div>
+    <div class="alert alert-info error"  *ngIf="signinForm.controls.mobile.invalid && signinForm.controls.mobile.touched && signinForm.controls.mobile.errors.pattern">Please enter indian number only</div>
+  
+
+    <label>Email</label>
+    <input type="email" placeholder="Email" formControlName="email" class="form-control" required>
+    <div class="alert alert-danger error" *ngIf="signinForm.controls.email.invalid && signinForm.controls.email.touched && signinForm.controls.email.errors.required">Email is required</div>
+    <div class="alert alert-info error" *ngIf="signinForm.controls.email.invalid && signinForm.controls.email.touched && signinForm.controls.email.errors.pattern">Please enter valid email</div>
+
+    <label>Password</label>
+    <input type="password" placeholder="Password" formControlName="password" class="form-control" required>
+    <div class="alert alert-danger error" *ngIf="signinForm.controls.password.invalid && signinForm.controls.password.touched && signinForm.controls.password.errors.required">Password is required</div>
+    <div class="alert alert-info error" *ngIf="signinForm.controls.password.invalid && signinForm.controls.password.touched && signinForm.controls.password.errors.pattern">Please enter password.</div>
+
+    
+    <label>Conform Password</label>
+    <input type="password" placeholder="Conform Password" formControlName="cpassword" class="form-control" required>
+    <div class="alert alert-danger error" *ngIf="signinForm.controls.cpassword.invalid && signinForm.controls.cpassword.touched && signinForm.controls.cpassword.errors.required">Conform Password is required</div><br>
+    
+
+
+    <button type="submit" class="btn btn-primary sub" [disabled]="!signinForm.valid">Submit</button>
+    <button type="submit" class="btn btn-danger can" (click)="cancel()">Cancel</button>
+
+
+</form>
+</div>
+</div>

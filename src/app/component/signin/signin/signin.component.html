@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="container">
+<form #signForm="ngForm" class="color" >
+
+  <h2 class="head">SIGN IN</h2>
+  <hr>
+  
+  <label>Full Name:</label><br>
+  <input type="text" class="form-control" placeholder="Enter Full Name" name="name1" required [(ngModel)]="name" #name1="ngModel" pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" ><br>
+  <div [hidden]="name1.valid||name1.pristine" class="alert alert-danger"> Full Name is required</div>
+
+
+  <label ><b>Mobile-No</b></label><br>
+  <input type="number" class="form-control" placeholder="Enter Mobile no" name="mbn" required [(ngModel)]="mb" #mbn="ngModel" pattern="^[0][1-9]\d{9}$|^[1-9]\d{9}$"><br>
+  <div [hidden]="mbn.valid||mbn.pristine||mbn.touched" class="alert alert-info">Mobile no is required</div>
+  
+  <label >Email:</label><br>
+  <input type="email" class="form-control"  placeholder="Enter email" name="em" [(ngModel)]="email" #em="ngModel" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" minlength="8"><br>
+  <div [hidden]="em.valid||em.pristine||em.touched" class="alert alert-warning">Please enter the email address </div>
+  
+  
+  <label >Password</label><br>
+  <input type="password" class="form-control" placeholder="Enter Password" name="psw" required [(ngModel)]="pass" #psw="ngModel" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,10}$" ><br>
+  <div [hidden]="psw.valid||psw.pristine||psw.touched" class="alert alert-success">Password length should be 10.</div>
+
+  <label><b>Repeat Password</b></label><br>
+  <input type="password" class="form-control" placeholder="Repeat Password" name="pswr" required [(ngModel)]="psr" #pswr="ngModel" compare="psw" pattern="{{psw.value}}"><br>
+  <span class="error" *ngIf="pswr.invalid && pswr.touched && pswr.required">Repeat password is required</span>
+  
+  
+  
+    <button type="submit" class="btn btn-success button" (click)="submitForm(signForm)" [disabled]="!signForm.valid">Sign Up</button>
+  
+
+</form>
+</div>
+</div>
+
